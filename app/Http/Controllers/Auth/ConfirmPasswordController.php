@@ -34,5 +34,8 @@ class ConfirmPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        if (isset($this)) {
+            $this->middleware('auth');
+        }
     }
+}

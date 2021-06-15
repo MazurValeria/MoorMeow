@@ -12,13 +12,13 @@ class Property extends Model
 
     protected $fillable = ['name', 'name_en'];
 
-    public function propertyOptions()
+    public function propertyOptions(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(PropertyOption::class);
     }
 
     //TODO: check table name and fields
-    public function products()
+    public function products(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Product::class);
     }

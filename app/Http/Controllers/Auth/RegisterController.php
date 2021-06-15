@@ -24,7 +24,7 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    protected function redirectTo()
+    protected function redirectTo(): string
     {
         if (Auth::user()->isAdmin()) {
             return route('home');

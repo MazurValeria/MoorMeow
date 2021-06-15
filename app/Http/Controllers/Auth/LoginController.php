@@ -21,7 +21,7 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    protected function redirectTo()
+    protected function redirectTo(): string
     {
         if (Auth::user()->isAdmin()) {
             return route('home');

@@ -8,17 +8,17 @@ class Order extends Model
 {
     protected $fillable = ['user_id', 'currency_id', 'sum', 'coupon_id'];
 
-    public function skus()
+    public function skus(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Sku::class)->withPivot(['count', 'price'])->withTimestamps();
     }
 
-    public function currency()
+    public function currency(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Currency::class);
     }
 
-    public function coupon()
+    public function coupon(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Coupon::class);
     }
@@ -28,7 +28,7 @@ class Order extends Model
         return $query->where('status', 1);
     }
 
-    public function calculateFullSum()
+    public function calculateFullSum(): int
     {
         $sum = 0;
         foreach ($this->skus()->withTrashed()->get() as $sku) {
@@ -52,7 +52,7 @@ class Order extends Model
         return $sum;
     }
 
-    public function saveOrder($name, $phone)
+    public function saveOrder($name, $phone): bool
     {
         $this->name = $name;
         $this->phone = $phone;

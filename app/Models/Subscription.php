@@ -14,12 +14,16 @@ class Subscription extends Model
     {
     }
 
+    private static function activeBySkuId($id)
+    {
+    }
+
     public function scopeActiveBySkuId($query, $skuId)
     {
         return $query->where('status', 0)->where('sku_id', $skuId);
     }
 
-    public function sku()
+    public function sku(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Sku::class);
     }

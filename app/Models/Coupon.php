@@ -12,27 +12,27 @@ class Coupon extends Model
 
     protected $dates = ['expired_at'];
 
-    public function orders()
+    public function orders(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Order::class);
     }
 
-    public function currency()
+    public function currency(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Currency::class);
     }
 
-    public function isAbsolute()
+    public function isAbsolute(): bool
     {
         return $this->type === 1;
     }
 
-    public function isOnlyOnce()
+    public function isOnlyOnce(): bool
     {
         return $this->only_once === 1;
     }
 
-    public function availableForUse()
+    public function availableForUse(): bool
     {
         $this->refresh();
         if (!$this->isOnlyOnce() || $this->orders->count() === 0) {

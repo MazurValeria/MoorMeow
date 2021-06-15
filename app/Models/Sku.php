@@ -17,7 +17,7 @@ class Sku extends Model
     {
     }
 
-    public function product()
+    public function product(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
@@ -27,12 +27,12 @@ class Sku extends Model
         return $query->where('count', '>', 0);
     }
 
-    public function propertyOptions()
+    public function propertyOptions(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(PropertyOption::class, 'sku_property_option')->withTimestamps();
     }
 
-    public function isAvailable()
+    public function isAvailable(): bool
     {
         return !$this->product->trashed() && $this->count > 0;
     }
@@ -45,7 +45,7 @@ class Sku extends Model
         return $this->price;
     }
 
-    public function getPriceAttribute($value)
+    public function getPriceAttribute($value): float
     {
         return round(CurrencyConversion::convert($value), 2);
     }

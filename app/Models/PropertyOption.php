@@ -12,7 +12,7 @@ class PropertyOption extends Model
 
     protected $fillable = ['property_id', 'name', 'name_en'];
 
-    public function property()
+    public function property(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Property::class);
     }

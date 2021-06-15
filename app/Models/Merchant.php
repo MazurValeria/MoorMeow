@@ -9,7 +9,7 @@ class Merchant extends Authenticatable
 {
     protected $fillable = ['name', 'email', 'token'];
 
-    public function createToken()
+    public function createToken(): string
     {
         $token = Str::random(60);
         $this->token = hash('sha256', $token);
