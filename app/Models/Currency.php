@@ -8,6 +8,10 @@ class Currency extends Model
 {
     protected $fillable = ['rate'];
 
+    public static function byCode($currencyCode)
+    {
+    }
+
     public function scopeByCode($query, $code)
     {
         return $query->where('code', $code);

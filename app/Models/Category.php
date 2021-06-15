@@ -11,6 +11,10 @@ class Category extends Model
 
     protected $fillable = ['code', 'name', 'description', 'image', 'name_en', 'description_en'];
 
+    public static function where(string $string, $code)
+    {
+    }
+
     public function products()
     {
         return $this->hasMany(Product::class);

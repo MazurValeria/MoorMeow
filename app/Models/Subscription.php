@@ -10,6 +10,10 @@ class Subscription extends Model
 {
     protected $fillable = ['email', 'sku_id'];
 
+    public static function create(array $array)
+    {
+    }
+
     public function scopeActiveBySkuId($query, $skuId)
     {
         return $query->where('status', 0)->where('sku_id', $skuId);

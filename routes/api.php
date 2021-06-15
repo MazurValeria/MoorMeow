@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => 'auth:api'], static function () {
-    Route::get('users', 'App\Http\Controllers\Api\UsersController@all');
+Route::middleware(['auth:api'])->group(function () {
+    Route::get('skus', 'Api\SkusController@getSkus');
 });
