@@ -11,7 +11,7 @@ class SubscriptionRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -21,14 +21,14 @@ class SubscriptionRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'email' => 'required|email',
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'email' => 'Поле email должно содержать корректный email адрес',

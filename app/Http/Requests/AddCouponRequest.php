@@ -28,7 +28,7 @@ class AddCouponRequest extends FormRequest
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'coupon.*' => __('basket.coupon.not_exists'),
