@@ -36,7 +36,10 @@ class Handler extends ExceptionHandler
      */
     public function report(Throwable $exception)
     {
-        parent::report($exception);
+        try {
+            parent::report($exception);
+        } catch (Throwable $e) {
+        }
     }
 
     /**
@@ -47,7 +50,7 @@ class Handler extends ExceptionHandler
      * @return \Illuminate\Http\Response
      * @throws Throwable
      */
-    public function render($request, Throwable $exception)
+    public function render($request, Throwable $exception): \Illuminate\Http\Response
     {
         return parent::render($request, $exception);
     }

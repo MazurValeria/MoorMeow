@@ -8,6 +8,10 @@ class Order extends Model
 {
     protected $fillable = ['user_id', 'currency_id', 'sum', 'coupon_id'];
 
+    public static function active()
+    {
+    }
+
     public function skus(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Sku::class)->withPivot(['count', 'price'])->withTimestamps();

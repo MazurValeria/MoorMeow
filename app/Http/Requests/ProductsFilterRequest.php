@@ -10,6 +10,10 @@ class ProductsFilterRequest extends FormRequest
      * @var mixed
      */
     private $price_from;
+    /**
+     * @var mixed
+     */
+    private $price_to;
 
     /**
      * Determine if the user is authorized to make this request.

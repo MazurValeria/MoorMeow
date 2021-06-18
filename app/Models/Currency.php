@@ -8,10 +8,6 @@ class Currency extends Model
 {
     protected $fillable = ['rate'];
 
-    public static function byCode($currencyCode)
-    {
-    }
-
     public function scopeByCode($query, $code)
     {
         return $query->where('code', $code);
@@ -19,6 +15,8 @@ class Currency extends Model
 
     public function isMain(): bool
     {
-        return $this->is_main === 1;
+        if (isset($this)) {
+            return $this->is_main === 1;
+        }
     }
 }

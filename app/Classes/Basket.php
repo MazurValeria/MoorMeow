@@ -39,12 +39,12 @@ class Basket
     /**
      * @return mixed
      */
-    public function getOrder()
+    public function getOrder(): Order
     {
         return $this->order;
     }
 
-    public function countAvailable($updateCount = false)
+    public function countAvailable($updateCount = false): bool
     {
         $skus = collect([]);
         foreach ($this->order->skus as $orderSku) {
@@ -66,7 +66,7 @@ class Basket
         return true;
     }
 
-    public function saveOrder($name, $phone, $email)
+    public function saveOrder($name, $phone, $email): bool
     {
         if (!$this->countAvailable(true)) {
             return false;
@@ -88,7 +88,7 @@ class Basket
         }
     }
 
-    public function addSku(Sku $sku)
+    public function addSku(Sku $sku): bool
     {
         if ($this->order->skus->contains($sku)) {
             $pivotRow = $this->order->skus->where('id', $sku->id)->first();

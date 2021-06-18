@@ -4,6 +4,8 @@ namespace App\Models;
 
 use App\Services\CurrencyConversion;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Sku extends Model
@@ -12,12 +14,16 @@ class Sku extends Model
 
     protected $fillable = ['product_id', 'count', 'price'];
     protected $visible = ['id', 'count', 'price', 'product_name'];
+    /**
+     * @var mixed
+     */
+    private $product;
 
     public static function find($id)
     {
     }
 
-    public function product(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
@@ -27,7 +33,7 @@ class Sku extends Model
         return $query->where('count', '>', 0);
     }
 
-    public function propertyOptions(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function propertyOptions(): BelongsToMany
     {
         return $this->belongsToMany(PropertyOption::class, 'sku_property_option')->withTimestamps();
     }
