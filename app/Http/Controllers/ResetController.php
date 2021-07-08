@@ -20,13 +20,9 @@ class ResetController extends Controller
             $files = Storage::disk('reset')->files($folder);
 
             foreach ($files as $file) {
-                try {
-                    Storage::put($file, Storage::disk('reset')->get($file));
-                } catch (FileNotFoundException $e) {
-                }
+                Storage::put($file, Storage::disk('reset')->get($file));
             }
         }
-
         session()->flash('success', __('main.project_reset'));
         return redirect()->route('index');
     }

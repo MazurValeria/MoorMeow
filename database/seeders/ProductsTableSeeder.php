@@ -77,7 +77,7 @@ class ProductsTableSeeder extends Seeder
                                   - Гамачок напольный
                                   - Гамачок на батарею',
                 'category_id'=> 4,
-                'image' => 'storage/categories/Images/Moormeow_hammockset_salad.jpeg',
+                'image' => 'storage/categories/Images/hammockset.jpeg',
             ],
         ],
         );
