@@ -80,4 +80,9 @@ class Product extends Model
     {
         return $this->recommend === 1;
     }
+
+    public function getPriceAttribute($value): float
+    {
+        return round(CurrencyConversion::convert($value), 2);
+    }
 }
