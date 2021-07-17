@@ -4,6 +4,8 @@ namespace App\Models;
 
 use App\Models\Traits\Translatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Property extends Model
@@ -12,13 +14,13 @@ class Property extends Model
 
     protected $fillable = ['name', 'name_en'];
 
-    public function propertyOptions(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function propertyOptions(): HasMany
     {
         return $this->hasMany(PropertyOption::class);
     }
 
     //TODO: check table name and fields
-    public function products(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class);
     }

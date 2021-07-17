@@ -6,8 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SkuRequest;
 use App\Models\Product;
 use App\Models\Sku;
+use Exception;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class SkuController extends Controller
 {
@@ -15,7 +19,7 @@ class SkuController extends Controller
      * Display a listing of the resource.
      *
      * @param  Product  $product
-     * @return \Illuminate\Http\Response
+     * @return Response|Application|Factory|View
      */
     public function index(Product $product)
     {
@@ -27,7 +31,7 @@ class SkuController extends Controller
      * Show the form for creating a new resource.
      *
      * @param  Product  $product
-     * @return void
+     * @return Application|Factory|View|void
      */
     public function create(Product $product)
     {
@@ -37,11 +41,11 @@ class SkuController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  Product  $product
-     * @return void
+     * @param SkuRequest $request
+     * @param Product $product
+     * @return RedirectResponse
      */
-    public function store(SkuRequest $request, Product $product)
+    public function store(SkuRequest $request, Product $product): RedirectResponse
     {
         $params = $request->all();
         $params['product_id'] = $request->product->id;
@@ -55,7 +59,7 @@ class SkuController extends Controller
      *
      * @param  Product  $product
      * @param  Sku  $skus
-     * @return void
+     * @return Application|Factory|View|void
      */
     public function show(Product $product, Sku $skus)
     {
@@ -67,7 +71,7 @@ class SkuController extends Controller
      *
      * @param  Product  $product
      * @param  Sku  $skus
-     * @return void
+     * @return Application|Factory|View|void
      */
     public function edit(Product $product, Sku $skus)
     {
@@ -77,12 +81,12 @@ class SkuController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  Request  $request
      * @param  Product  $product
      * @param  Sku  $skus
-     * @return void
+     * @return RedirectResponse
      */
-    public function update(Request $request, Product $product, Sku $skus)
+    public function update(Request $request, Product $product, Sku $skus): RedirectResponse
     {
         $params = $request->all();
         $params['product_id'] = $request->product->id;
@@ -96,10 +100,10 @@ class SkuController extends Controller
      *
      * @param  Product  $product
      * @param  Sku  $skus
-     * @return void
-     * @throws \Exception
+     * @return RedirectResponse
+     * @throws Exception
      */
-    public function destroy(Product $product, Sku $skus)
+    public function destroy(Product $product, Sku $skus): RedirectResponse
     {
         $skus->delete();
         return redirect()->route('skus.index', $product);
