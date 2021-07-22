@@ -6,7 +6,6 @@ use App\Classes\Basket;
 use App\Http\Requests\AddCouponRequest;
 use App\Models\Coupon;
 use App\Models\Sku;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +17,7 @@ class BasketController extends Controller
         return view('basket', compact('order'));
     }
 
-    public function basketConfirm(Request $request): RedirectResponse
+    public function basketConfirm(Request $request)
     {
         $basket = new Basket();
         if ($basket->getOrder()->hasCoupon() && !$basket->getOrder()->coupon->availableForUse()) {
@@ -47,29 +46,29 @@ class BasketController extends Controller
         return view('order', compact('order'));
     }
 
-    public function basketAdd(Sku $skus): RedirectResponse
+    public function basketAdd(Sku $skus)
     {
         $result = (new Basket(true))->addSku($skus);
 
         if ($result) {
-            session()->flash('success', __('basket.added').$skus->get('product')->__('name'));
+            session()->flash('success', __('basket.added').$skus->product->__('name'));
         } else {
-            session()->flash('warning', $skus->get('product')->__('name').__('basket.not_available_more'));
+            session()->flash('warning', $skus->product->__('name').__('basket.not_available_more'));
         }
 
         return redirect()->route('basket');
     }
 
-    public function basketRemove(Sku $skus): RedirectResponse
+    public function basketRemove(Sku $skus)
     {
         (new Basket())->removeSku($skus);
 
-        session()->flash('warning', __('basket.removed').$skus->get('product')->__('name'));
+        session()->flash('warning', __('basket.removed').$skus->product->__('name'));
 
         return redirect()->route('basket');
     }
 
-    public function setCoupon(AddCouponRequest $request): RedirectResponse
+    public function setCoupon(AddCouponRequest $request)
     {
         $coupon = Coupon::where('code', $request->coupon)->first();
 
