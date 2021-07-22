@@ -5,6 +5,9 @@ namespace App\Models;
 use App\Models\Traits\Translatable;
 use App\Services\CurrencyConversion;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
@@ -16,21 +19,26 @@ class Product extends Model
         'description_en'
     ];
 
-    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function skus(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function skus(): HasMany
     {
         return $this->hasMany(Sku::class);
     }
 
-    public function properties(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function properties(): BelongsToMany
     {
         return $this->belongsToMany(Property::class, 'property_product')->withTimestamps();
     }
 
+    /**
+     * @param $query
+     * @param $code
+     * @return mixed
+     */
     public function scopeByCode($query, $code)
     {
         return $query->where('code', $code);
@@ -79,10 +87,5 @@ class Product extends Model
     public function isRecommend(): bool
     {
         return $this->recommend === 1;
-    }
-
-    public function getPriceAttribute($value): float
-    {
-        return round(CurrencyConversion::convert($value), 2);
     }
 }

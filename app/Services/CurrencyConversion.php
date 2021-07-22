@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Currency;
 use Carbon\Carbon;
+use Exception;
 
 class CurrencyConversion
 {
@@ -53,7 +54,10 @@ class CurrencyConversion
 
         if ($originCurrency->code != self::DEFAULT_CURRENCY_CODE) {
             if ($originCurrency->rate != 0 || $originCurrency->updated_at->startOfDay() != Carbon::now()->startOfDay()) {
-                CurrencyRates::getRates();
+                try {
+                    CurrencyRates::getRates();
+                } catch (Exception $e) {
+                }
                 self::loadContainer();
                 $originCurrency = self::$container[$originCurrencyCode];
             }
@@ -66,7 +70,10 @@ class CurrencyConversion
         $targetCurrency = self::$container[$targetCurrencyCode];
         if ($originCurrency->code != self::DEFAULT_CURRENCY_CODE) {
             if ($targetCurrency->rate == 0 || $targetCurrency->updated_at->startOfDay() != Carbon::now()->startOfDay()) {
-                CurrencyRates::getRates();
+                try {
+                    CurrencyRates::getRates();
+                } catch (Exception $e) {
+                }
                 self::loadContainer();
                 $targetCurrency = self::$container[$targetCurrencyCode];
             }

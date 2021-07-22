@@ -32,7 +32,7 @@ class Coupon extends Model
         return $this->only_once === 1;
     }
 
-    public function availableForUse(): bool
+    public function availableForUse()
     {
         $this->refresh();
         if (!$this->isOnlyOnce() || $this->orders->count() === 0) {

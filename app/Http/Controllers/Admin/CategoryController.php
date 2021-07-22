@@ -5,10 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 
@@ -17,8 +14,7 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Application|Factory|View|Response
-     * @noinspection PhpVoidFunctionResultUsedInspection
+     * @return Response
      */
     public function index()
     {
@@ -29,7 +25,7 @@ class CategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Application|Factory|View|Response
+     * @return Response
      */
     public function create()
     {
@@ -39,10 +35,10 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param CategoryRequest $request
-     * @return RedirectResponse
+     * @param Request $request
+     * @return Response
      */
-    public function store(CategoryRequest $request): RedirectResponse
+    public function store(CategoryRequest $request)
     {
         $params = $request->all();
         unset($params['image']);
@@ -58,7 +54,7 @@ class CategoryController extends Controller
      * Display the specified resource.
      *
      * @param Category $category
-     * @return Application|Factory|View|Response
+     * @return Response
      */
     public function show(Category $category)
     {
@@ -69,7 +65,7 @@ class CategoryController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param Category $category
-     * @return Application|Factory|View|Response
+     * @return Response
      */
     public function edit(Category $category)
     {
@@ -79,11 +75,11 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param CategoryRequest $request
+     * @param Request $request
      * @param Category $category
-     * @return RedirectResponse
+     * @return Response
      */
-    public function update(CategoryRequest $request, Category $category): RedirectResponse
+    public function update(CategoryRequest $request, Category $category)
     {
         $params = $request->all();
         unset($params['image']);
@@ -100,9 +96,9 @@ class CategoryController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Category $category
-     * @return RedirectResponse
+     * @return Response
      */
-    public function destroy(Category $category): RedirectResponse
+    public function destroy(Category $category)
     {
         $category->delete();
         return redirect()->route('categories.index');

@@ -11,14 +11,6 @@ class Category extends Model
 
     protected $fillable = ['code', 'name', 'description', 'image', 'name_en', 'description_en'];
 
-    public static function paginate(int $int)
-    {
-    }
-
-    public static function create(array $params)
-    {
-    }
-
     public function products(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Product::class);

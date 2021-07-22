@@ -8,10 +8,10 @@
         <div class="filters row">
             <div class="col-sm-6 col-md-3">
                 <label for="price_from">@lang('main.price_from')
-                    <input type="text" name="price_from" id="price_from" size="6" value="{{ request()->price_from}}">
+                    <input type="text" name="price_from" id="price_from" size="6" value="{{ request()->get('price_from')}}">
                 </label>
                 <label for="price_to">@lang('main.to')
-                    <input type="text" name="price_to" id="price_to" size="6"  value="{{ request()->price_to }}">
+                    <input type="text" name="price_to" id="price_to" size="6"  value="{{ request()->get('price_to') }}">
                 </label>
             </div>
             <div class="col-sm-2 col-md-2">
@@ -42,5 +42,3 @@
     </div>
     {{ $skus->links() }}
 @endsection
-
-

@@ -19,7 +19,6 @@ class Property extends Model
         return $this->hasMany(PropertyOption::class);
     }
 
-    //TODO: check table name and fields
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class);

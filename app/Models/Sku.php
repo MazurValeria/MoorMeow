@@ -14,14 +14,6 @@ class Sku extends Model
 
     protected $fillable = ['product_id', 'count', 'price'];
     protected $visible = ['id', 'count', 'price', 'product_name'];
-    /**
-     * @var mixed
-     */
-    private $product;
-
-    public static function find($id)
-    {
-    }
 
     public function product(): BelongsTo
     {

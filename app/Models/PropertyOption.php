@@ -19,7 +19,6 @@ class PropertyOption extends Model
         return $this->belongsTo(Property::class);
     }
 
-    //TODO: check table name and fields
     public function skus(): BelongsToMany
     {
         return $this->belongsToMany(Sku::class);

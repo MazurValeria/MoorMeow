@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 
 class ResetController extends Controller
 {
-    public function reset(): RedirectResponse
+    public function reset()
     {
         Artisan::call('migrate:fresh --seed');
 
@@ -21,12 +19,10 @@ class ResetController extends Controller
             $files = Storage::disk('reset')->files($folder);
 
             foreach ($files as $file) {
-                try {
-                    Storage::put($file, Storage::disk('reset')->get($file));
-                } catch (FileNotFoundException $e) {
-                }
+                Storage::put($file, Storage::disk('reset')->get($file));
             }
         }
+
         session()->flash('success', __('main.project_reset'));
         return redirect()->route('index');
     }

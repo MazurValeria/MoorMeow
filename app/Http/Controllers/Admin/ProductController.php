@@ -15,31 +15,31 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @return Illuminate\Http\Response;
      */
     public function index()
     {
-        $products = Product::paginate(10);
+        $products = Product::all()->paginate(10);
         return view('auth.products.index', compact('products'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @return Illuminate\Http\Response;
      */
     public function create()
     {
-        $categories = Category::get();
-        $properties = Property::get();
+        $categories = \App\Models\Category::get();
+        $properties = \App\Models\Property::get();
         return view('auth.products.form', compact('categories', 'properties'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     * @param Request $request
+     * @return Illuminate\Http\Response;
      */
     public function store(ProductRequest $request)
     {
@@ -57,8 +57,8 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @param \App\Product $product
+     * @return Illuminate\Http\Response;
      */
     public function show(Product $product)
     {
@@ -68,8 +68,8 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @param Product $product
+     * @return Illuminate\Http\Response;
      */
     public function edit(Product $product)
     {
@@ -81,9 +81,9 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     * @param Request  $request
+     * @param \App\Product $product
+     * @return Illuminate\Http\Response;
      */
     public function update(ProductRequest $request, Product $product)
     {
@@ -109,8 +109,8 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
+     * @param Product $product
+     * @return Illuminate\Http\Response;
      */
     public function destroy(Product $product)
     {
