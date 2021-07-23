@@ -17,7 +17,7 @@ class MerchantController extends Controller
     public function index()
     {
         $merchants = Merchant::paginate(10);
-        return view('auth.merchants.index', compact('merchants'));
+        return response()->view('auth.merchants.index', compact('merchants'));
     }
 
     /**
@@ -27,7 +27,7 @@ class MerchantController extends Controller
      */
     public function create()
     {
-        return view('auth.merchants.form');
+        return response()->view('auth.merchants.form');
     }
 
     /**
@@ -39,7 +39,7 @@ class MerchantController extends Controller
     public function store(Request $request)
     {
         Merchant::create($request->all());
-        return redirect()->route('merchants.index');
+        return response()->redirect()->route('merchants.index');
     }
 
     /**
@@ -50,7 +50,7 @@ class MerchantController extends Controller
      */
     public function show(Merchant $merchant)
     {
-        return view('auth.merchants.show', compact('merchant'));
+        return response()->view('auth.merchants.show', compact('merchant'));
     }
 
     /**
@@ -61,7 +61,7 @@ class MerchantController extends Controller
      */
     public function edit(Merchant $merchant)
     {
-        return view('auth.merchants.form', compact('merchant'));
+        return response()->view('auth.merchants.form', compact('merchant'));
     }
 
     /**
@@ -74,7 +74,7 @@ class MerchantController extends Controller
     public function update(Request $request, Merchant $merchant)
     {
         $merchant->update($request->all());
-        return redirect()->route('merchants.index');
+        return response()->redirect()->route('merchants.index');
     }
 
     /**
@@ -86,7 +86,7 @@ class MerchantController extends Controller
     public function destroy(Merchant $merchant)
     {
         $merchant->delete();
-        return redirect()->route('merchants.index');
+        return response()->redirect()->route('merchants.index');
     }
 
     public function updateToken(Merchant $merchant)

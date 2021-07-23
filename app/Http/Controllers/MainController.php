@@ -33,7 +33,7 @@ class MainController extends Controller
             }
         }
 
-        $skus = $skusQuery->paginate(6)->withPath("?".$request->getQueryString());
+        $skus = $skusQuery->paginate(10)->withPath("?".$request->getQueryString());
 
         return view('index', compact('skus'));
     }

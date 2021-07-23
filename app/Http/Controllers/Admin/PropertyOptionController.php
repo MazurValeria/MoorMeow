@@ -20,7 +20,7 @@ class PropertyOptionController extends Controller
     public function index(Property $property)
     {
         $propertyOptions = PropertyOption::paginate(10);
-        return view('auth.property_options.index', compact('propertyOptions', 'property'));
+        return response()->view('auth.property_options.index', compact('propertyOptions', 'property'));
     }
 
     /**
@@ -31,7 +31,7 @@ class PropertyOptionController extends Controller
      */
     public function create(Property $property)
     {
-        return view('auth.property_options.form', compact('property'));
+        return response()->view('auth.property_options.form', compact('property'));
     }
 
     /**
@@ -47,7 +47,7 @@ class PropertyOptionController extends Controller
         $params['property_id'] = $request->property->id;
 
         PropertyOption::create($params);
-        return redirect()->route('property-options.index', $property);
+        return response()->redirect()->route('property-options.index', $property);
     }
 
     /**
@@ -87,7 +87,7 @@ class PropertyOptionController extends Controller
         $params = $request->all();
 
         $propertyOption->update($params);
-        return redirect()->route('property-options.index', $property);
+        return response()->redirect()->route('property-options.index', $property);
     }
 
     /**

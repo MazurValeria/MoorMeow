@@ -81,12 +81,13 @@
             <div class="col-lg-6"><p>Самые популярные товары</p>
                 <ul>
                     @foreach ($bestSkus as $bestSku)
-                        <li><a href="{{ route('sku',
-                [$bestSku->product->category->code, $bestSku->product->code, $bestSku]) }}">
-                                {{ $bestSku->product->__('name') }}</a></li>
+                        <li><a href="{{ route('sku', [$bestSku->product->category->code, $bestSku->product->code, $bestSku]) }}">{{ $bestSku->product->__('name') }}</a></li>
                     @endforeach
                 </ul>
             </div>
+        </div>
+        <div class="container">
+            <span class="text-muted">&copy; MoorMeow 2021</span>
         </div>
     </div>
 </footer>

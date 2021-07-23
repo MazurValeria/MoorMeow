@@ -21,7 +21,7 @@ class SkuController extends Controller
     public function index(Product $product)
     {
         $skus = $product->skus()->paginate(10);
-        return view('auth.skus.index', compact('skus', 'product'));
+        return response()->view('auth.skus.index', compact('skus', 'product'));
     }
 
     /**

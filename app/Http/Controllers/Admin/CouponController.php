@@ -18,7 +18,7 @@ class CouponController extends Controller
     public function index()
     {
         $coupons = Coupon::paginate(10);
-        return view('auth.coupons.index', compact('coupons'));
+        return response()->view('auth.coupons.index', compact('coupons'));
     }
 
     /**
@@ -28,7 +28,7 @@ class CouponController extends Controller
      */
     public function create()
     {
-        return view('auth.coupons.form');
+        return response()->view('auth.coupons.form');
     }
 
     /**
@@ -62,7 +62,7 @@ class CouponController extends Controller
      */
     public function show(Coupon $coupon)
     {
-        return view('auth.coupons.show', compact('coupon'));
+        return response()->view('auth.coupons.show', compact('coupon'));
     }
 
     /**
@@ -73,7 +73,7 @@ class CouponController extends Controller
      */
     public function edit(Coupon $coupon)
     {
-        return view('auth.coupons.form', compact('coupon'));
+        return response()->view('auth.coupons.form', compact('coupon'));
     }
 
     /**
@@ -99,7 +99,7 @@ class CouponController extends Controller
         }
 
         $coupon->update($params);
-        return redirect()->route('coupons.index');
+        return response()->redirect()->route('coupons.index');
     }
 
     /**
@@ -111,6 +111,6 @@ class CouponController extends Controller
     public function destroy(Coupon $coupon)
     {
         $coupon->delete();
-        return redirect()->route('coupons.index');
+        return response()->redirect()->route('coupons.index');
     }
 }

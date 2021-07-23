@@ -18,7 +18,7 @@ class PropertyController extends Controller
     public function index()
     {
         $properties = Property::paginate(10);
-        return view('auth.properties.index', compact('properties'));
+        return response()->view('auth.properties.index', compact('properties'));
     }
 
     /**
@@ -28,7 +28,7 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        return view('auth.properties.form');
+        return response()->view('auth.properties.form');
     }
 
     /**
@@ -40,7 +40,7 @@ class PropertyController extends Controller
     public function store(PropertyRequest $request)
     {
         Property::create($request->all());
-        return redirect()->route('properties.index');
+        return response()->redirect()->route('properties.index');
     }
 
     /**
@@ -51,7 +51,7 @@ class PropertyController extends Controller
      */
     public function show(Property $property)
     {
-        return view('auth.properties.show', compact('property'));
+        return response()->view('auth.properties.show', compact('property'));
     }
 
     /**
@@ -62,7 +62,7 @@ class PropertyController extends Controller
      */
     public function edit(Property $property)
     {
-        return view('auth.properties.form', compact('property'));
+        return response()->view('auth.properties.form', compact('property'));
     }
 
     /**
@@ -75,7 +75,7 @@ class PropertyController extends Controller
     public function update(PropertyRequest $request, Property $property)
     {
         $property->update($request->all());
-        return redirect()->route('properties.index');
+        return response()->redirect()->route('properties.index');
     }
 
     /**
@@ -87,6 +87,6 @@ class PropertyController extends Controller
     public function destroy(Property $property)
     {
         $property->delete();
-        return redirect()->route('properties.index');
+        return response()->redirect()->route('properties.index');
     }
 }

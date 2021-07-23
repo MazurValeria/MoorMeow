@@ -19,8 +19,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all()->paginate(10);
-        return view('auth.products.index', compact('products'));
+        $products = Product::paginate(10);
+        return response()->view('auth.products.index', compact('products'));
     }
 
     /**
@@ -32,7 +32,7 @@ class ProductController extends Controller
     {
         $categories = \App\Models\Category::get();
         $properties = \App\Models\Property::get();
-        return view('auth.products.form', compact('categories', 'properties'));
+        return response()->response()->view('auth.products.form', compact('categories', 'properties'));
     }
 
     /**
@@ -51,7 +51,7 @@ class ProductController extends Controller
         }
 
         Product::create($params);
-        return redirect()->route('products.index');
+        return response()->redirect()->route('products.index');
     }
 
     /**
@@ -60,9 +60,9 @@ class ProductController extends Controller
      * @param \App\Product $product
      * @return Illuminate\Http\Response;
      */
-    public function show(Product $product)
+    public function show(Product $product): Illuminate\Http\Response
     {
-        return view('auth.products.show', compact('product'));
+        return response()->view('auth.products.show', compact('product'));
     }
 
     /**
@@ -75,7 +75,7 @@ class ProductController extends Controller
     {
         $categories = Category::get();
         $properties = Property::get();
-        return view('auth.products.form', compact('product', 'categories', 'properties'));
+        return response()->view('auth.products.form', compact('product', 'categories', 'properties'));
     }
 
     /**
@@ -85,7 +85,7 @@ class ProductController extends Controller
      * @param \App\Product $product
      * @return Illuminate\Http\Response;
      */
-    public function update(ProductRequest $request, Product $product)
+    public function update(ProductRequest $request, Product $product): Illuminate\Http\Response
     {
         $params = $request->all();
         unset($params['image']);
@@ -103,7 +103,7 @@ class ProductController extends Controller
         $product->properties()->sync($request->property_id);
 
         $product->update($params);
-        return redirect()->route('products.index');
+        return response()->redirect()->route('products.index');
     }
 
     /**
@@ -115,6 +115,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('products.index');
+        return response()->redirect()->route('products.index');
     }
 }

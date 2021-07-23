@@ -11,7 +11,7 @@ class CategoryRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -21,7 +21,7 @@ class CategoryRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         $rules = [
             'code' => 'required|min:3|max:255|unique:categories,code',
@@ -36,7 +36,7 @@ class CategoryRequest extends FormRequest
         return $rules;
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'required' => 'Поле :attribute обязательно для ввода',

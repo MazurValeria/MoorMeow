@@ -19,7 +19,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::paginate(10);
-        return view('auth.categories.index', compact('categories'));
+        return response()->view('auth.categories.index', compact('categories'));
     }
 
     /**
@@ -29,7 +29,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('auth.categories.form');
+        return response()->view('auth.categories.form');
     }
 
     /**
@@ -47,39 +47,39 @@ class CategoryController extends Controller
         }
 
         Category::create($params);
-        return redirect()->route('categories.index');
+        return response()->redirect()->route('categories.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param Category $category
+     * @param \App\Category $category
      * @return Response
      */
     public function show(Category $category)
     {
-        return view('auth.categories.show', compact('category'));
+        return response()->view('auth.categories.show', compact('category'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Category $category
+     * @param \App\Category $category
      * @return Response
      */
     public function edit(Category $category)
     {
-        return view('auth.categories.form', compact('category'));
+        return response()->view('auth.categories.form', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param Category $category
+     * @param \App\Category $category
      * @return Response
      */
-    public function update(CategoryRequest $request, Category $category)
+    public function update(CategoryRequest $request, Category $category): Response
     {
         $params = $request->all();
         unset($params['image']);
@@ -89,18 +89,18 @@ class CategoryController extends Controller
         }
 
         $category->update($params);
-        return redirect()->route('categories.index');
+        return response()->redirect()->route('categories.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Category $category
+     * @param \App\Category $category
      * @return Response
      */
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('categories.index');
+        return response()->redirect()->route('categories.index');
     }
 }
