@@ -22,8 +22,7 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li @routeactive('index')><a href="{{ route('index') }}">@lang('main.all_products')</a></li>
-                <li @routeactive('categor*')><a href="{{ route('categories') }}">@lang('main.categories')</a>
-                </li>
+                <li @routeactive('categor*')><a href="{{ route('categories') }}">@lang('main.categories')</a></li>
                 <li @routeactive('basket*')><a href="{{ route('basket') }}">@lang('main.cart')</a></li>
                 <li><a href="{{ route('reset') }}">@lang('main.reset_project')</a></li>
                 <li><a href="{{ route('locale', __('main.set_lang')) }}">@lang('main.set_lang')</a></li>
@@ -85,9 +84,6 @@
                     @endforeach
                 </ul>
             </div>
-        </div>
-        <div class="container">
-            <span class="text-muted">&copy; MoorMeow 2021</span>
         </div>
     </div>
 </footer>

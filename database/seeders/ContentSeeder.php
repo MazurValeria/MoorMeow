@@ -124,7 +124,7 @@ class ContentSeeder extends Seeder
                 'code' => 'window',
                 'description' => 'Идеальный мягкий гамачок для любителей вечно полежать!',
                 'description_en' => 'An ideal hammock for your furry friend!',
-                'image' => 'categories/windowhammock.jpeg',
+                'image' => 'categories/windowhammockcatopt.png',
                 'products' =>[
                     [
                         'name' => 'Гамачок оконный',
@@ -177,7 +177,7 @@ class ContentSeeder extends Seeder
                 'code' => 'battery S',
                 'description' => 'Вот кому будет теплей всего зимой!',
                 'description_en' => 'Look who is the luckiest now!',
-                'image' => 'products/Moormeow_batteryhammock_wine.jpeg',
+                'image' => 'categories/batteryhammockcatopt.jpeg',
                 'products' =>[
 
                     [
@@ -272,10 +272,10 @@ class ContentSeeder extends Seeder
             [
                 'name' => 'Гамачок напольный',
                 'name_en' => 'Floor hammock',
-                'code' => 'floor light',
+                'code' => 'floor',
                 'description' => 'Отличный классический лежачок для вашего любимца!',
                 'description_en' => 'The best offer for your lovely pet!',
-                'image' => 'products/Moormeow_hammock_black.jpeg',
+                'image' => 'categories/floorhammockcatopt.jpeg',
                 'products' =>[
                     [
                         'name' => 'Гамачок напольный светлое дерево',
@@ -371,7 +371,7 @@ class ContentSeeder extends Seeder
                 'code' => 'set',
                 'description' => 'Если душа просит осчасливить любимца вдвойне!',
                 'description_en' => 'What if you want double pleasure for your pet?',
-                'image' => 'products/Moormeow_hammockset_salad.jpeg',
+                'image' => 'categories/hammocksetcatopt.jpeg',
                 'products' =>[
                     [
                         'name' => 'Наборы с гамачками',

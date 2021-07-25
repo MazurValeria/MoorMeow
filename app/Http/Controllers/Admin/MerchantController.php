@@ -91,6 +91,7 @@ class MerchantController extends Controller
 
     public function updateToken(Merchant $merchant)
     {
+
         session()->flash('success', $merchant->createToken());
         return redirect()->route('merchants.index');
     }

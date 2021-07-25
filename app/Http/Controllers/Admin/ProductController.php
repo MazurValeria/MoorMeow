@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Response;
 
 class ProductController extends Controller
 {
@@ -32,7 +33,7 @@ class ProductController extends Controller
     {
         $categories = \App\Models\Category::get();
         $properties = \App\Models\Property::get();
-        return response()->response()->view('auth.products.form', compact('categories', 'properties'));
+        return response()->view('auth.products.form', compact('categories', 'properties'));
     }
 
     /**

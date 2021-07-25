@@ -33,34 +33,33 @@ class MainController extends Controller
             }
         }
 
-        $skus = $skusQuery->paginate(10)->withPath("?".$request->getQueryString());
+        $skus = $skusQuery->paginate(6)->withPath("?".$request->getQueryString());
 
-        return view('index', compact('skus'));
+        return response()->view('index', compact('skus'));
     }
 
     public function categories()
     {
-        $categories = Category::get();
-        return view('categories', compact('categories'));
+         return response()->view('categories', compact('categories'));
     }
 
     public function category($code)
     {
         $category = Category::where('code', $code)->first();
-        return view('category', compact('category'));
+        return response()->view('category', compact('category'));
     }
 
     public function sku($categoryCode, $productCode, Sku $skus)
     {
-        if ($skus->get('product')->code != $productCode) {
+        if ($skus->product->code != $productCode) {
             abort(404, 'Product not found');
         }
 
-        if ($skus->get('product')->category->code != $categoryCode) {
+        if ($skus->product->category->code != $categoryCode) {
             abort(404, 'Category not found');
         }
 
-        return view('product', compact('skus'));
+        return response()->view('product', compact('skus'));
     }
 
     public function subscribe(SubscriptionRequest $request, Sku $skus)
