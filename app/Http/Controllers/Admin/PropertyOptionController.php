@@ -47,7 +47,7 @@ class PropertyOptionController extends Controller
         $params['property_id'] = $request->property->id;
 
         PropertyOption::create($params);
-        return response()->redirect()->route('property-options.index', $property);
+        return redirect()->route('property-options.index', $property);
     }
 
     /**

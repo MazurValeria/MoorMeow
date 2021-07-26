@@ -39,7 +39,7 @@ class MerchantController extends Controller
     public function store(Request $request)
     {
         Merchant::create($request->all());
-        return response()->redirect()->route('merchants.index');
+        return redirect()->route('merchants.index');
     }
 
     /**
@@ -74,7 +74,7 @@ class MerchantController extends Controller
     public function update(Request $request, Merchant $merchant)
     {
         $merchant->update($request->all());
-        return response()->redirect()->route('merchants.index');
+        return redirect()->route('merchants.index');
     }
 
     /**
@@ -86,7 +86,7 @@ class MerchantController extends Controller
     public function destroy(Merchant $merchant)
     {
         $merchant->delete();
-        return response()->redirect()->route('merchants.index');
+        return redirect()->route('merchants.index');
     }
 
     public function updateToken(Merchant $merchant)

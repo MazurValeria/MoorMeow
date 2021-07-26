@@ -47,7 +47,7 @@ class CategoryController extends Controller
         }
 
         Category::create($params);
-        return response()->redirect()->route('categories.index');
+        return response()->route('categories.index');
     }
 
     /**
@@ -77,7 +77,7 @@ class CategoryController extends Controller
      *
      * @param Request $request
      * @param \App\Category $category
-     * @return Response
+     * @return Illuminate\Http\Response
      */
     public function update(CategoryRequest $request, Category $category): Response
     {
@@ -101,6 +101,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return response()->redirect()->route('categories.index');
+        return redirect()->route('categories.index');
     }
 }

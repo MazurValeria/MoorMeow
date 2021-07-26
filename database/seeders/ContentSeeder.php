@@ -132,7 +132,7 @@ class ContentSeeder extends Seeder
                         'code' => 'window',
                         'description' => 'Идеальный мягкий гамачок для любителей вечно полежать!',
                         'description_en' => 'An ideal hammock for your furry friend!',
-                        'image' => 'categories/windowhammock.jpeg',
+                        'image' => 'categories/windowhammockcatopt.png',
                         'properties'=>[
                             1,
                         ],

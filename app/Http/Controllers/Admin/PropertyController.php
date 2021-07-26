@@ -40,7 +40,7 @@ class PropertyController extends Controller
     public function store(PropertyRequest $request)
     {
         Property::create($request->all());
-        return response()->redirect()->route('properties.index');
+        return redirect()->route('properties.index');
     }
 
     /**
@@ -87,6 +87,6 @@ class PropertyController extends Controller
     public function destroy(Property $property)
     {
         $property->delete();
-        return response()->redirect()->route('properties.index');
+        return redirect()->route('properties.index');
     }
 }

@@ -61,7 +61,7 @@ class ProductController extends Controller
      * @param \App\Product $product
      * @return Illuminate\Http\Response;
      */
-    public function show(Product $product): Illuminate\Http\Response
+    public function show(Product $product)
     {
         return response()->view('auth.products.show', compact('product'));
     }

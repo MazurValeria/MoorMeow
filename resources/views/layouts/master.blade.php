@@ -85,6 +85,9 @@
                 </ul>
             </div>
         </div>
+        <div class="container">
+            <span class="text-muted">&copy; MoorMeow 2021</span>
+        </div>
     </div>
 </footer>
 

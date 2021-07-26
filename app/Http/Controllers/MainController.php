@@ -40,7 +40,8 @@ class MainController extends Controller
 
     public function categories()
     {
-         return response()->view('categories', compact('categories'));
+        $categories = Category::get();
+         return view('categories', compact('categories'));
     }
 
     public function category($code)
