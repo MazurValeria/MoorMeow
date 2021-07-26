@@ -124,7 +124,7 @@ class ContentSeeder extends Seeder
                 'code' => 'window',
                 'description' => 'Идеальный мягкий гамачок для любителей вечно полежать!',
                 'description_en' => 'An ideal hammock for your furry friend!',
-                'image' => 'categories/windowhammockcatopt.png',
+                'image' => 'categories/windowhammockcatopt.jpeg',
                 'products' =>[
                     [
                         'name' => 'Гамачок оконный',
@@ -132,7 +132,7 @@ class ContentSeeder extends Seeder
                         'code' => 'window',
                         'description' => 'Идеальный мягкий гамачок для любителей вечно полежать!',
                         'description_en' => 'An ideal hammock for your furry friend!',
-                        'image' => 'categories/windowhammockcatopt.png',
+                        'image' => 'categories/windowhammockcatopt.jpeg',
                         'properties'=>[
                             1,
                         ],
@@ -174,7 +174,7 @@ class ContentSeeder extends Seeder
             [
                 'name' => 'Гамачок на батарею',
                 'name_en' => 'Radiator hammock',
-                'code' => 'battery S',
+                'code' => 'battery',
                 'description' => 'Вот кому будет теплей всего зимой!',
                 'description_en' => 'Look who is the luckiest now!',
                 'image' => 'categories/batteryhammockcatopt.jpeg',
@@ -186,7 +186,7 @@ class ContentSeeder extends Seeder
                         'code' => 'battery S',
                         'description' => 'Вот кому будет теплей всего зимой!',
                         'description_en' => 'Look who is the luckiest now!',
-                        'image' => 'products/Moormeow_batteryhammock_wine.jpeg',
+                        'image' => 'categories/batteryhammockcatopt.jpeg',
                         'properties'=>[
                             1, 2,
                         ],
@@ -229,7 +229,7 @@ class ContentSeeder extends Seeder
                         'code' => 'battery xl',
                         'description' => 'Вот кому будет теплей всего зимой!',
                         'description_en' => 'Look who is the luckiest now!',
-                        'image' => 'products/Moormeow_batteryhammock_blue.jpeg',
+                        'image' => 'categories/batteryhammockcatxlopt.jpeg',
                         'properties'=>[
                             1, 2
                         ],
@@ -283,7 +283,7 @@ class ContentSeeder extends Seeder
                         'code' => 'floor light',
                         'description' => 'Отличный классический лежачок для вашего любимца!',
                         'description_en' => 'The best offer for your lovely pet!',
-                        'image' => 'products/Moormeow_hammock_black.jpeg',
+                        'image' => 'categories/floorhammockcatlightopt.jpeg',
                         'properties'=>[
                             1, 2, 3
                         ],
@@ -326,7 +326,7 @@ class ContentSeeder extends Seeder
                         'code' => 'floor dark',
                         'description' => 'Отличный классический лежачок для вашего любимца!',
                         'description_en' => 'The best offer for your lovely pet!',
-                        'image' => 'products/Moormeow_hammock_latte2.jpeg',
+                        'image' => 'categories/floorhammockcatopt.jpeg',
                         'properties'=>[
                             1, 3,
                         ],
@@ -379,7 +379,7 @@ class ContentSeeder extends Seeder
                         'code' => 'set',
                         'description' => 'Если душа просит осчасливить любимца вдвойне!',
                         'description_en' => 'What if you want double pleasure for your pet?',
-                        'image' => 'products/Moormeow_hammockset_salad.jpeg',
+                        'image' => 'categories/hammocksetcatopt.jpeg',
                         'properties'=>[
                             1,
                         ],
@@ -457,8 +457,8 @@ class ContentSeeder extends Seeder
                     foreach ($skusOptions as $skuOptions) {
                         $skuId = DB::table('skus')->insertGetId([
                             'product_id' => $productId,
-                            'count' => rand(1, 100),
-                            'price' => rand(5000, 100000),
+                            'count' => rand(1, 20),
+                            'price' => rand(420, 800),
                             'created_at' => Carbon::now(),
                             'updated_at' => Carbon::now(),
                         ]);

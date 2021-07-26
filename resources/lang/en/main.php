@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'online_shop' => 'Online Shop',
+    'online_shop' => 'MoorMeow',
     'all_products' => 'All products',
     'product' => 'Product',
     'categories' => 'Categories',
@@ -9,8 +9,8 @@ return [
     'category' => 'Category ',
     'cart' => 'Your cart',
     'reset_project' => 'Reset project to default state',
-    'current_lang' => 'en',
-    'set_lang' => 'ru',
+    'current_lang' => 'EN',
+    'set_lang' => 'RU',
     'properties' => [
         'hit' => 'Hit',
         'recommend' => 'Recommend',
@@ -25,7 +25,7 @@ return [
     'my_orders' => 'My orders',
     'admin_panel' => 'Admin panel',
     'title' => 'Main',
-    'rub' => 'rub',
+    'rub' => 'MDL',
     'add_to_basket' => 'Add to cart',
     'more' => 'More about',
     'not_available' => 'Not available',

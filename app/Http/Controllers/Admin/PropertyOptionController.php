@@ -87,7 +87,7 @@ class PropertyOptionController extends Controller
         $params = $request->all();
 
         $propertyOption->update($params);
-        return response()->redirect()->route('property-options.index', $property);
+        return redirect()->route('property-options.index', $property);
     }
 
     /**

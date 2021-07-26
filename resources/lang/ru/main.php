@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'online_shop' => 'Интернет Магазин',
+    'online_shop' => 'MoorMeow',
     'all_products' => 'Все товары',
     'product' => 'Товар',
     'categories' => 'Категории',
@@ -9,8 +9,8 @@ return [
     'category' => 'Категория ',
     'cart' => 'В корзину',
     'reset_project' => 'Сбросить проект в начальное состояние',
-    'current_lang' => 'ru',
-    'set_lang' => 'en',
+    'current_lang' => 'RU',
+    'set_lang' => 'EN',
     'properties' => [
         'hit' => 'Хит',
         'recommend' => 'Рекомендуем',
@@ -25,7 +25,7 @@ return [
     'my_orders' => 'Мои заказы',
     'admin_panel' => 'Панель администратора',
     'title' => 'Главная',
-    'rub' => 'руб',
+    'rub' => 'MDL',
     'add_to_basket' => 'В корзину',
     'more' => 'Подробнее',
     'not_available' => 'Не доступен',
